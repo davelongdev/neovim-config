@@ -397,6 +397,17 @@ keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
 --Configurations
 ----------------------
 
+local wk = require("which-key")
+wk.register({
+  d = {
+      name = "Database",
+      u = { ":DBUIToggle<Cr>", "Toggle UI" },
+      f = { "<Cmd>DBUIFindBuffer<Cr>", "Find buffer" },
+      r = { "<Cmd>DBUIRenameBuffer<Cr>", "Rename buffer" },
+      q = { "<Cmd>DBUILastQueryInfo<Cr>", "Last query info" },
+  },
+}, { prefix = "<leader>" })
+
 --setup nvimtree
 
 require("nvim-tree").setup({
