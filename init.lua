@@ -38,7 +38,9 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 
--------my stuff
+--------------------
+  -- mystuff
+--------------------
 
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded_netrw = 1
@@ -50,9 +52,6 @@ vim.opt.termguicolors = true
 -- Lazy Plugin Manager - All plugins get required here
 require('lazy').setup({
 
---------------------
-  -- mystuff
---------------------
 
   'nvim-tree/nvim-tree.lua',
   'christoomey/vim-tmux-navigator',
