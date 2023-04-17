@@ -59,6 +59,8 @@ require('lazy').setup({
   'tpope/vim-surround',
   'windwp/nvim-autopairs',
 
+------ end mystuff
+
   -- NOTE: First, some plugins that don't require any configuration
 
   -- Git related plugins
