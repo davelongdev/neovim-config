@@ -58,6 +58,21 @@ require('lazy').setup({
   'christoomey/vim-tmux-navigator',
   'tpope/vim-surround',
   'windwp/nvim-autopairs',
+  'kdheepak/lazygit.nvim',
+
+-- dadbod / database stuff
+{
+  'tpope/vim-dadbod',
+  opt = true,
+  dependencies = {
+    'kristijanhusak/vim-dadbod-ui',
+    'kristijanhusak/vim-dadbod-completion',
+  },
+  config = function()
+    require('config.dadbod').setup()
+  end,
+  cmd = { 'DBUIToggle', 'DBUI', 'DBUIAddConnection', 'DBUIFindBuffer', 'DBUIRenameBuffer', 'DBUILastQueryInfo' },
+},
 
 ------ end mystuff
 
@@ -350,6 +365,9 @@ keymap.set("n", "<S-h>", ":bprevious<CR>")
 -- Move text up and down
 keymap.set("n", "<M-j>", "<Esc>:m .+1<CR>==")
 keymap.set("n", "<M-k>", "<Esc>:m .-2<CR>==")
+
+-- setup mapping to call :LazyGit
+keymap.set("n", "<leader>gg", ":LazyGit<CR>")
 
 ---------------------
 -- Visual Mode
