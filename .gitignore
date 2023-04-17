@@ -1,0 +1,4 @@
+/ignore
+.DS_Store
+nvim-notes.txt
+lazy-lock.json
