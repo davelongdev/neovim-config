@@ -13,14 +13,11 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
-local keymap = vim.keymap -- for conciseness
-
 -----------------------------------
 -- [[General Stuff]]
 -----------------------------------
 
 -- Set <space> as the leader key
--- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -208,103 +205,106 @@ require('lazy').setup({
 -----------------------------
 -- [[ Setting options ]]
 -----------------------------
+local o = vim.o
 -- See `:help vim.o`
 
 -- clean up start screen
-vim.o.shortmess = vim.o.shortmess .. 'I'
+o.shortmess = vim.o.shortmess .. 'I'
 --
 -- Set highlight on search
-vim.o.hlsearch = true
+o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
 
 -- line numbers
-vim.o.relativenumber = true -- show relative line numbers
-vim.o.number = true -- shows absolute line number on cursor line (when relative number is on)
+o.relativenumber = true -- show relative line numbers
+o.number = true -- shows absolute line number on cursor line (when relative number is on)
 
 -- tabs & indentation
-vim.o.tabstop = 2 -- 2 spaces for tabs (prettier default)
-vim.o.shiftwidth = 2 -- 2 spaces for indent width
-vim.o.expandtab = true -- expand tab to spaces
-vim.o.autoindent = true -- copy indent from current line when starting new one
+o.tabstop = 2 -- 2 spaces for tabs (prettier default)
+o.shiftwidth = 2 -- 2 spaces for indent width
+o.expandtab = true -- expand tab to spaces
+o.autoindent = true -- copy indent from current line when starting new one
 
 -- line wrapping
-vim.o.wrap = true
+o.wrap = true
 
 -- search settings
-vim.o.ignorecase = true -- ignore case when searching
-vim.o.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
+o.ignorecase = true -- ignore case when searching
+o.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
 
 -- cursor line
-vim.o.cursorline = true -- highlight the current cursor line
+o.cursorline = true -- highlight the current cursor line
 
 -- appearance
 
 -- turn on termguicolors for nightfly colorscheme to work
 -- (have to use iterm2 or any other true color terminal)
-vim.o.termguicolors = true
-vim.o.background = "dark" -- colorschemes that can be light or dark will be made dark
-vim.o.signcolumn = "yes" -- show sign column so that text doesn't shift
+o.termguicolors = true
+o.background = "dark" -- colorschemes that can be light or dark will be made dark
+o.signcolumn = "yes" -- show sign column so that text doesn't shift
 
 -- backspace
-vim.o.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
+o.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
 
 -------------fix
 -- clipboard
 -- vim.o.clipboard:append("unnamedplus") -- use system clipboard as default register
 
 -- split windows
-vim.o.splitright = true -- split vertical window to the right
-vim.o.splitbelow = true -- split horizontal window to the bottom
+o.splitright = true -- split vertical window to the right
+o.splitbelow = true -- split horizontal window to the bottom
 
 
 -------------fix
 -- vim.o.iskeyword:append("-") -- consider string-string as whole word
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+o.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+o.clipboard = 'unnamedplus'
 
 -- Enable break indent
-vim.o.breakindent = true
+o.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true
+o.undofile = true
 
 -- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+o.ignorecase = true
+o.smartcase = true
 
 -- Keep signcolumn on by default
 vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeout = true
-vim.o.timeoutlen = 300
+o.updatetime = 250
+o.timeout = true
+o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
+o.termguicolors = true
 
 -------------------------------
 -- [[ Keymaps ]]
 -------------------------------
 
+local keymap = vim.keymap -- for conciseness
+
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -409,16 +409,6 @@ wk.register({
 }, { prefix = "<leader>" })
 
 --setup nvimtree
-
-require("nvim-tree").setup({
-  view = {
-    mappings = {
-      list = {
-        { key = "_", action = "CD" },
-      },
-    },
-  },
-})
 
 -- import nvim-autopairs safely
 local autopairs_setup, autopairs = pcall(require, "nvim-autopairs")
