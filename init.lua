@@ -49,13 +49,32 @@ vim.opt.rtp:prepend(lazypath)
 -- Lazy Plugin Manager - All plugins get required here
 require('lazy').setup({
 
+---------------
 -- mystuff
-
-  'nvim-tree/nvim-tree.lua',
+  'HiPhish/rainbow-delimiters.nvim',
+  'nvim-treesitter/playground',
   'christoomey/vim-tmux-navigator',
   'tpope/vim-surround',
   'windwp/nvim-autopairs',
   'kdheepak/lazygit.nvim',
+  'thezeroalpha/vim-relatively-complete',
+  'nvim-tree/nvim-tree.lua',
+  'moll/vim-bbye',
+  'sainnhe/gruvbox-material',
+  'ap/vim-css-color',
+  {
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons'
+},
+
+-- lf integration
+{
+    'ptzz/lf.vim',
+    dependencies = {
+      'voldikss/vim-floaterm'
+    }
+},
 
 -- dadbod / database stuff
 {
@@ -71,6 +90,7 @@ require('lazy').setup({
   cmd = { 'DBUIToggle', 'DBUI', 'DBUIAddConnection', 'DBUIFindBuffer', 'DBUIRenameBuffer', 'DBUILastQueryInfo' },
 },
 
+--------------------
 ------ end mystuff
 
   -- NOTE: First, some plugins that don't require any configuration
@@ -93,8 +113,11 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
-
+      { 'j-hui/fidget.nvim',
+        opts = {},
+        tag = "legacy",
+      },
+     --
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
     },
@@ -321,6 +344,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- My Keymaps
 -------------------
 
+--cycling within wc selections
+-- keymap.set("c", "<C-n>", "<C-j>")
+-- keymap.set("c", "<C-p>", "<C-k>")
+
 keymap.set("n", "dd", '"_dd')
 
 -- Vertical Movement - half page & stays in center
@@ -390,6 +417,8 @@ keymap.set("x", "<M-k>", ":move '<-2<CR>gv-gv")
 -- Plugins
 ----------------------
 
+-- plugin configs here 
+
 -- nvim-tree
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
 
@@ -397,8 +426,64 @@ keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
 --Configurations
 ----------------------
 
+-- Rainbow Delimiters Setup
+-- This module contains a number of default definitions
+local rainbow_delimiters = require 'rainbow-delimiters'
+
+vim.g.rainbow_delimiters = {
+    strategy = {
+        [''] = rainbow_delimiters.strategy['global'],
+        vim = rainbow_delimiters.strategy['local'],
+    },
+    query = {
+        [''] = 'rainbow-delimiters',
+        lua = 'rainbow-blocks',
+        javascript = 'rainbow-parens',
+    },
+    highlight = {
+        'RainbowDelimiterRed',
+        'RainbowDelimiterYellow',
+        'RainbowDelimiterBlue',
+        'RainbowDelimiterOrange',
+        'RainbowDelimiterGreen',
+        'RainbowDelimiterViolet',
+        'RainbowDelimiterCyan',
+    },
+}
+
+require "nvim-treesitter.configs".setup {
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?',
+    },
+  }
+}
+
 local wk = require("which-key")
 wk.register({
+  l = {
+    name = "lazygit",
+    l = { ":LazyGit<Cr>", "open lazygit"},
+  },
+  b = {
+    name = "bufferline",
+    h = { ":BufferLineMovePrev<Cr>", "move prev"},
+    l = { ":BufferLineMoveNext<Cr>", "move next"},
+    d = { ":Bdelete<Cr>", "delete current buffer"},
+  },
   d = {
       name = "Database",
       u = { ":DBUIToggle<Cr>", "Toggle UI" },
@@ -408,9 +493,118 @@ wk.register({
   },
 }, { prefix = "<leader>" })
 
---setup nvimtree
+-- empty setup using defaults
+require("nvim-tree").setup()
+
+-- bufferline
+
+local bufferline = require('bufferline')
+require("bufferline").setup{
+  options = {
+    mode = "buffers", -- set to "tabs" to only show tabpages instead
+    --style_preset = bufferline.presets.default, -- or bufferline.presets.minimal,
+    themable = true, --| false, -- allows highlight groups to be overriden i.e. sets highlights as default
+    numbers = "buffer_id", --"none", "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
+    close_command = "bdelete! %d",       -- can be a string | function, | false see "Mouse actions"
+    right_mouse_command = "bdelete! %d", -- can be a string | function | false, see "Mouse actions"
+    left_mouse_command = "buffer %d",    -- can be a string | function, | false see "Mouse actions"
+    middle_mouse_command = nil,          -- can be a string | function, | false see "Mouse actions"
+    indicator = {
+        icon = '▎', -- this should be omitted if indicator style is not 'icon'
+        style = 'icon' --| 'underline' | 'none',
+    },
+    buffer_close_icon = '',
+    modified_icon = '●',
+    close_icon = '',
+    left_trunc_marker = '',
+    right_trunc_marker = '',
+    --- name_formatter can be used to change the buffer's label in the bufferline.
+    --- Please note some names can/will break the
+    --- bufferline so use this at your discretion knowing that it has
+    --- some limitations that will *NOT* be fixed.
+    --name_formatter = function(buf)  -- buf contains:
+          -- name                | str        | the basename of the active file
+          -- path                | str        | the full path of the active file
+          -- bufnr (buffer only) | int        | the number of the active buffer
+          -- buffers (tabs only) | table(int) | the numbers of the buffers in the tab
+          -- tabnr (tabs only)   | int        | the "handle" of the tab, can be converted to its ordinal number using: `vim.api.nvim_tabpage_get_number(buf.tabnr)`
+    --end,
+    max_name_length = 18,
+    max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
+    truncate_names = true, -- whether or not tab names should be truncated
+    tab_size = 18,
+    diagnostics = false, --| "nvim_lsp" | "coc",
+    diagnostics_update_in_insert = false,
+    -- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
+    --diagnostics_indicator = function(count, level, diagnostics_dict, context)
+        --return "("..count..")"
+    --end,
+    -- NOTE: this will be called a lot so don't do any heavy processing here
+    -- custom_filter = function(buf_number, buf_numbers)
+    --     -- filter out filetypes you don't want to see
+    --     if vim.bo[buf_number].filetype ~= "<i-dont-want-to-see-this>" then
+    --         return true
+    --     end
+    --     -- filter out by buffer name
+    --     if vim.fn.bufname(buf_number) ~= "<buffer-name-I-dont-want>" then
+    --         return true
+    --     end
+    --     -- filter out based on arbitrary rules
+    --     -- e.g. filter out vim wiki buffer from tabline in your work repo
+    --     if vim.fn.getcwd() == "<work-repo>" and vim.bo[buf_number].filetype ~= "wiki" then
+    --         return true
+    --     end
+    --     -- filter out by it's index number in list (don't show first buffer)
+    --     if buf_numbers[1] ~= buf_number then
+    --         return true
+    --     end
+    -- end,
+    offsets = {
+        {
+            filetype = "NvimTree",
+            text = "File Explorer", --| function ,
+            text_align = "left", --| "center" | "right"
+            separator = false
+        }
+    },
+    color_icons = true, --| false, -- whether or not to add the filetype icon highlights
+    -- get_element_icon = function(element)
+    --   -- element consists of {filetype: string, path: string, extension: string, directory: string}
+    --   -- This can be used to change how bufferline fetches the icon
+    --   -- for an element e.g. a buffer or a tab.
+    --   -- e.g.
+    --   local icon, hl = require('nvim-web-devicons').get_icon_by_filetype(element.filetype, { default = false })
+    --   return icon, hl
+    --   -- or
+    --   local custom_map = {my_thing_ft: {icon = "my_thing_icon", hl}}
+    --   return custom_map[element.filetype]
+    -- end,
+    show_buffer_icons = true, --| false, -- disable filetype icons for buffers
+    show_buffer_close_icons = true, -- | false,
+    show_close_icon = true, --| false,
+    show_tab_indicators = true, --| false,
+    show_duplicate_prefix = true, --| false, -- whether to show duplicate buffer prefix
+    persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
+    -- can also be a table containing 2 custom separators
+    -- [focused and unfocused]. eg: { '|', '|' }
+    separator_style = "thin", --"slant", | "slope" | "thick" | "thin" | { 'any', 'any' },
+    enforce_regular_tabs = false, --| true,
+    always_show_bufferline = true, --| false,
+    hover = {
+        enabled = true,
+        delay = 200,
+        reveal = {'close'}
+    },
+    sort_by = 'insert_after_current', --|'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
+        -- add custom logic
+        --return buffer_a.modified > buffer_b.modified
+    --end
+
+  },
+}
 
 -- import nvim-autopairs safely
+
 local autopairs_setup, autopairs = pcall(require, "nvim-autopairs")
 if not autopairs_setup then
 	return
@@ -440,18 +634,18 @@ end
 
 -- make autopairs and completion work together
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
--- [[ Configure Nvim-Tree ]]
--- empty setup using defaults
-require("nvim-tree").setup()
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
+local actions = require "telescope.actions"
 require('telescope').setup {
   defaults = {
     mappings = {
       i = {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
       },
     },
   },
@@ -607,8 +801,11 @@ local servers = {
   tsserver = {},
   html = {},
   cssls = {},
-  emmet_ls = {},
+  emmet_ls = {
+	  filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte", "php", "astro" },
+  },
   intelephense = {},
+  phpactor = {},
   quick_lint_js = {},
   lua_ls = {
     Lua = {
@@ -692,5 +889,48 @@ cmp.setup {
   },
 }
 
+require'lspconfig'.astro.setup{}
+-----------------------
+-- php stuff
+-----------------------
+
+-- import cmp-nvim-lsp plugin safely
+local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not cmp_nvim_lsp_status then
+	return
+end
+
+-- used to enable autocompletion (assign to every lsp server config)
+local capabilities = cmp_nvim_lsp.default_capabilities()
+
+-- import lspconfig plugin safely
+local lspconfig_status, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status then
+	return
+end
+
+-- configure intelephense
+lspconfig["intelephense"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+  root_dir = require("lspconfig").util.root_pattern("composer.json", ".git", "*.php"),
+})
+
+-- configure phpactor
+require'lspconfig'.phpactor.setup{
+    on_attach = on_attach,
+    init_options = {
+        ["language_server_phpstan.enabled"] = false,
+        ["language_server_psalm.enabled"] = false,
+    },
+  root_dir = require("lspconfig").util.root_pattern("composer.json", ".git", "*.php"),
+}
+
+-- configure emmet language server
+lspconfig["emmet_ls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte", "php" },
+})
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
