@@ -1,10 +1,20 @@
------------------------------------
+
 -- [[Kickstart Config]]
 -----------------------------------
 
 --------------------
   -- mystuff
 --------------------
+
+--vimwiki
+
+vim.g.vimwiki_list = {
+  {
+    path = '~/vimwiki/',
+    syntax = 'markdown',
+    ext = '.md'
+  },
+}
 
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded_netrw = 1
@@ -52,6 +62,12 @@ require('lazy').setup({
 ---------------
 -- mystuff
   'HiPhish/rainbow-delimiters.nvim',
+  'catppuccin/nvim',
+  'michal-h21/vim-zettel',
+  'junegunn/goyo.vim',
+  'preservim/tagbar',
+  'vimwiki/vimwiki',
+  'ThePrimeagen/harpoon',
   'nvim-treesitter/playground',
   'christoomey/vim-tmux-navigator',
   'tpope/vim-surround',
@@ -149,10 +165,10 @@ require('lazy').setup({
   },
 
   { -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    'catppuccin/nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'catppuccin-macchiato'
     end,
   },
 
@@ -162,7 +178,6 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
         component_separators = '|',
         section_separators = '',
       },
@@ -176,7 +191,7 @@ require('lazy').setup({
     opts = {
       char = '┊',
       show_trailing_blankline_indent = false,
-    },
+    }
   },
 
   -- "gc" to comment visual regions/lines
@@ -230,6 +245,10 @@ require('lazy').setup({
 -----------------------------
 local o = vim.o
 -- See `:help vim.o`
+
+-- disable swap files for use w/ tmux
+
+o.swapfile=false
 
 -- clean up start screen
 o.shortmess = vim.o.shortmess .. 'I'
@@ -344,9 +363,24 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- My Keymaps
 -------------------
 
---cycling within wc selections
--- keymap.set("c", "<C-n>", "<C-j>")
--- keymap.set("c", "<C-p>", "<C-k>")
+-- help links
+keymap.set("n", "<M-l>", "<C-]>")
+keymap.set("n", "<M-o>", "<C-o>")
+
+--command mode movement
+keymap.set("c", "<C-h>", "<Left>")
+keymap.set("c", "<C-l>", "<Right>")
+keymap.set("c", "<C-j>", "<Down>")
+keymap.set("c", "<C-k>", "<Up>")
+keymap.set("c", "<C-a>", "<Home>")
+keymap.set("c", "<C-e>", "<End>")
+keymap.set("c", "<C-b>", "<S-Left>")
+keymap.set("c", "<C-w>", "<S-Right>")
+-- keymap.set("c", "Left", "<C-h>")
+
+--cyling within command mode completion menu
+vim.cmd('cnoremap <c-k> <c-p>')
+vim.cmd('cnoremap <c-j> <c-n>')
 
 keymap.set("n", "dd", '"_dd')
 
@@ -386,15 +420,14 @@ keymap.set("n", "<M-Left>", ":vertical resize -2<CR>")
 keymap.set("n", "<M-Right>", ":vertical resize +2<CR>")
 
 -- Navigate buffers
-keymap.set("n", "<S-l>", ":bnext<CR>")
-keymap.set("n", "<S-h>", ":bprevious<CR>")
+keymap.set("n", "<leader>l", ":bnext<CR>")
+keymap.set("n", "<leader>h", ":bprevious<CR>")
 
 -- Move text up and down
 keymap.set("n", "<M-j>", "<Esc>:m .+1<CR>==")
 keymap.set("n", "<M-k>", "<Esc>:m .-2<CR>==")
 
--- setup mapping to call :LazyGit
-keymap.set("n", "<leader>gg", ":LazyGit<CR>")
+-- Move text up and down
 
 ---------------------
 -- Visual Mode
@@ -426,8 +459,40 @@ keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
 --Configurations
 ----------------------
 
--- Rainbow Delimiters Setup
+--harpoon
+
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+
+keymap.set("n", "<leader>a", mark.add_file)
+keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+
+keymap.set("n", "<leader>1", function() ui.nav_file(1) end)
+keymap.set("n", "<leader>2", function() ui.nav_file(2) end)
+keymap.set("n", "<leader>3", function() ui.nav_file(3) end)
+keymap.set("n", "<leader>4", function() ui.nav_file(4) end)
+keymap.set("n", "<leader>5", function() ui.nav_file(4) end)
+keymap.set("n", "<leader>6", function() ui.nav_file(4) end)
+
+
+-- tmux-navigation setup
+
+-- require'vim-tmux-navigation'.setup {
+--     disable_when_zoomed = true, -- defaults to false
+--     keybindings = {
+--         left = "<C-h>",
+--         down = "<C-j>",
+--         up = "<C-k>",
+--         right = "<C-l>",
+--         last_active = "<C-\\>",
+--         next = "<C-x>",
+--     }
+-- }
+
+-- RAINBOW DELIMITERS SETUP
+
 -- This module contains a number of default definitions
+
 local rainbow_delimiters = require 'rainbow-delimiters'
 
 vim.g.rainbow_delimiters = {
@@ -438,20 +503,33 @@ vim.g.rainbow_delimiters = {
     query = {
         [''] = 'rainbow-delimiters',
         lua = 'rainbow-blocks',
-        javascript = 'rainbow-parens',
+        javascript = 'rainbow-delimiters-react',
+        astro = '; inherits: ecma, jsx, html, typescript',
     },
     highlight = {
-        'RainbowDelimiterRed',
-        'RainbowDelimiterYellow',
-        'RainbowDelimiterBlue',
-        'RainbowDelimiterOrange',
-        'RainbowDelimiterGreen',
-        'RainbowDelimiterViolet',
-        'RainbowDelimiterCyan',
+    'RainbowDelimiterRed',
+    'RainbowDelimiterViolet',
+    'RainbowDelimiterOrange',
+    'RainbowDelimiterYellow',
+    'RainbowDelimiterBlue',
+    'RainbowDelimiterGreen',
+    'RainbowDelimiterCyan',
     },
 }
 
-require "nvim-treesitter.configs".setup {
+
+-- TREESITTER SETUP
+
+require "nvim-treesitter.configs".setup
+  ---@diagnostic disable-next-line missing-fields      
+  {
+  highlight = {
+    enable = true
+  },
+  indent = {
+    enable = true,
+    disable = {}
+  },
   playground = {
     enable = true,
     disable = {},
@@ -472,18 +550,28 @@ require "nvim-treesitter.configs".setup {
   }
 }
 
+-- WHICHKEY SETUP
+
 local wk = require("which-key")
 wk.register({
-  l = {
-    name = "lazygit",
-    l = { ":LazyGit<Cr>", "open lazygit"},
+  i = {
+    "[i]nfo :WhichKey main",
+    { ":WhichKey<Cr>", "open whichkey" },
+  },
+  a = "add harpoon mark",
+  s = {
+    name = "search"
+  },
+  g = {
+    "lazygit",
+    { ":LazyGit<Cr>", "open lazygit"},
   },
   b = {
     name = "bufferline",
-    h = { ":BufferLineMovePrev<Cr>", "move prev"},
-    l = { ":BufferLineMoveNext<Cr>", "move next"},
-    d = { ":Bdelete<Cr>", "delete current buffer"},
+    h = { ":BufferLineMovePrev<Cr>", "move prev" },
+    l = { ":BufferLineMoveNext<Cr>", "move next" },
   },
+  m = { ":Bdelete<Cr>", "delete current buffer" },
   d = {
       name = "Database",
       u = { ":DBUIToggle<Cr>", "Toggle UI" },
@@ -493,14 +581,19 @@ wk.register({
   },
 }, { prefix = "<leader>" })
 
+--NVIMTREE SETUP
+
 -- empty setup using defaults
 require("nvim-tree").setup()
 
--- bufferline
+-- BUFFERLINE SETUP
 
-local bufferline = require('bufferline')
-require("bufferline").setup{
-  options = {
+require("bufferline").setup
+  ---@diagnostic disable-next-line missing-fields      
+  {
+  options =
+    ---@diagnostic disable-next-line missing-fields      
+    {
     mode = "buffers", -- set to "tabs" to only show tabpages instead
     --style_preset = bufferline.presets.default, -- or bufferline.presets.minimal,
     themable = true, --| false, -- allows highlight groups to be overriden i.e. sets highlights as default
@@ -670,10 +763,13 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup
+  ---@diagnostic disable-next-line missing-fields      
+  {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
 
@@ -728,10 +824,10 @@ require('nvim-treesitter.configs').setup {
     swap = {
       enable = true,
       swap_next = {
-        ['<leader>a'] = '@parameter.inner',
+        ['<leader>p'] = '@parameter.inner',
       },
       swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
+        ['<leader>P'] = '@parameter.inner',
       },
     },
   },
@@ -843,23 +939,35 @@ mason_lspconfig.setup_handlers {
 }
 
 -- nvim-cmp setup
-local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
 luasnip.config.setup {}
 
-cmp.setup {
+-- initialize global var to false -> nvim-cmp turned off per default
+vim.g.cmptoggle = true
+
+-- toggle cmp keymap
+vim.keymap.set("n", "<leader>x", "<cmd>lua vim.g.cmptoggle = not vim.g.cmptoggle<CR>", { desc = "toggle nvim-cmp" })
+-- vim.keymap.set("i", "<C-Space>", "<cmd>lua cmp.mapping.complete()<CR>", { desc = "trigger nvim-cmp" })
+
+cmp.setup
+  ---@diagnostic disable-next-line missing-fields      
+  {
+  enabled = function()
+    return vim.g.cmptoggle
+  end,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
-  mapping = cmp.mapping.preset.insert {
+  mapping = cmp.mapping.preset.insert({
+    ['<C-a>'] = cmp.mapping.complete(),
     ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
     ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete {},
+    ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
@@ -882,7 +990,7 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
-  },
+  }),
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
@@ -925,6 +1033,17 @@ require'lspconfig'.phpactor.setup{
     },
   root_dir = require("lspconfig").util.root_pattern("composer.json", ".git", "*.php"),
 }
+
+-- configure ltex
+
+--[[
+require'lspconfig'.ltex.setup{
+  on_attach = on_attach,
+  cmd = { "ltex-ls" },
+  filetypes = { "markdown", "text" },
+  flags = { debounce_text_changes = 300 },
+}
+]]
 
 -- configure emmet language server
 lspconfig["emmet_ls"].setup({
