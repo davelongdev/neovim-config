@@ -62,6 +62,7 @@ require('lazy').setup({
 ---------------
 -- mystuff
   'HiPhish/rainbow-delimiters.nvim',
+  '{rafamadriz/friendly-snippets',
   'catppuccin/nvim',
   'michal-h21/vim-zettel',
   'junegunn/goyo.vim',
@@ -462,6 +463,12 @@ keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
 ----------------------
 --Configurations
 ----------------------
+
+-- luasnip
+
+require("luasnip.loaders.from_vscode").lazy_load()
+-- load snippets from path/of/your/nvim/config/my-cool-snippets
+-- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./my-cool-snippets" } })
 
 --harpoon
 
