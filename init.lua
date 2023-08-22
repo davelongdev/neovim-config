@@ -570,6 +570,7 @@ wk.register({
     { ":WhichKey<Cr>", "open whichkey" },
   },
   a = "add harpoon mark",
+  d = "diagnostics",
   s = {
     name = "search"
   },
