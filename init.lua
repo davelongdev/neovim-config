@@ -1016,6 +1016,22 @@ cmp.setup
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
+  formatting =
+  ---@diagnostic disable-next-line missing-fields      
+    {
+    fields = { "kind", 'abbr', 'menu'},
+    format = function(entry, vim_item)
+      vim_item.menu = ({
+        buffer = "[Buffer]",
+        luasnip = "[LuaSnip]",
+        nvim_lsp = "[LSP]",
+        path = "[Path]",
+        nvim_lua = "Lua",
+        latex_symbols = "[LaTeX]"
+      })[entry.source.name]
+      return vim_item
+    end
+  }
 }
 
 require'lspconfig'.astro.setup{}
