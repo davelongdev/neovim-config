@@ -988,6 +988,7 @@ cmp.setup
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ['<C-e>'] = cmp.mapping.abort(),
+    ['<C-a'] = cmp.mapping(cmp.mapping.complete()),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
