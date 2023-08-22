@@ -1026,7 +1026,8 @@ if not cmp_nvim_lsp_status then
 end
 
 -- used to enable autocompletion (assign to every lsp server config)
-local capabilities = cmp_nvim_lsp.default_capabilities()
+-- local capabilities = 
+cmp_nvim_lsp.default_capabilities()
 
 -- import lspconfig plugin safely
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
