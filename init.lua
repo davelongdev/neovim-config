@@ -572,7 +572,7 @@ wk.register({
     l = { ":BufferLineMoveNext<Cr>", "move next" },
   },
   m = { ":Bdelete<Cr>", "delete current buffer" },
-  d = {
+  dd = {
       name = "Database",
       u = { ":DBUIToggle<Cr>", "Toggle UI" },
       f = { "<Cmd>DBUIFindBuffer<Cr>", "Find buffer" },
@@ -833,20 +833,27 @@ require('nvim-treesitter.configs').setup
   },
 }
 
-
 -- Diagnoscics Options
 vim.diagnostic.config({
   virtual_text = false,
   signs = true,
   underline = true,
-  -- update_in_insert = false,
-  -- severity_sort = false,
+  update_in_insert = true,
+  severity_sort = true,
+  float = {
+    focusable = false,
+    style = "minimal",
+    border = "rounded",
+    source = "always",
+    header = "",
+    prefix = "",
+  }
 })
 
 -- Diagnostic Keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-vim.keymap.set('n', '<leader>ee', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 -- LSP settings.
