@@ -76,8 +76,8 @@ require("luasnip.loaders.from_vscode").lazy_load()
 ls.add_snippets(
   "all", {
     ls.parser.parse_snippet(
-      'snip',
-      'snipped'),
+      'c',
+      'console.log()'),
 })
 
 --[[
