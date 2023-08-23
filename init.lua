@@ -465,10 +465,7 @@ keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
 ----------------------
 
 -- luasnip
-
-require("luasnip.loaders.from_vscode").lazy_load()
--- load snippets from path/of/your/nvim/config/my-cool-snippets
--- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./my-cool-snippets" } })
+-- at ~/.config/nvim/after/plugin/luasnip.lua
 
 --harpoon
 
@@ -969,8 +966,6 @@ mason_lspconfig.setup_handlers {
 
 -- nvim-cmp setup
 local luasnip = require 'luasnip'
-
-luasnip.config.setup {}
 
 -- initialize global var to false -> nvim-cmp turned off per default
 vim.g.cmptoggle = true
