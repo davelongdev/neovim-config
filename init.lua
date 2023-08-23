@@ -64,6 +64,7 @@ require('lazy').setup({
   'HiPhish/rainbow-delimiters.nvim',
   '{rafamadriz/friendly-snippets',
   'catppuccin/nvim',
+  'folke/zen-mode.nvim',
   'michal-h21/vim-zettel',
   'junegunn/goyo.vim',
   'preservim/tagbar',
