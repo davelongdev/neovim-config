@@ -87,7 +87,10 @@ vim.keymap.set("n", "<M-k>", "<Esc>:m .-2<CR>==")
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
--- neotree
+-- toggles neotree file explorer
 vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>") -- toggle neotree file explorer
+
+-- toggles lazygit
+vim.keymap.set("n", "<leader>G", ":LazyGit <CR>") -- toggle neotree file explorer
 
 -- vim: ts=2 sts=2 sw=2 et
