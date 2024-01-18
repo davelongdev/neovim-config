@@ -29,6 +29,13 @@ require('lazy').setup({
     }
   },
 
+  {
+    'heavenshell/vim-jsdoc',
+    config = function()
+      vim.g.jsdoc_lehre_path = '/Users/dave/.nvm/versions/node/v20.10.0/bin/lehre'
+    end,
+  },
+
   { -- Installs catppuccin-macchiato theme and sets it as default
     'catppuccin/nvim',
     priority = 1000,
