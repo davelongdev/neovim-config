@@ -31,8 +31,8 @@ vim.wo.signcolumn = 'yes'
 
 -- decrease update time
 vim.o.timeoutlen = 300
--- vim.o.updatetime = 250 - relates to swap file (i think) which is disabled
--- vim.o.timeout = true  - relaates to keys waiting for key combo see :help timeoue
+vim.o.updatetime = 250 -- unsure abt this one - relates to swap file which is disabled - also used for cursorhold
+vim.o.timeout = true  -- relaates to keys waiting for key combo see :help timeout
 
 -- set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
