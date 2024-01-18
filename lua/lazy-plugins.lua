@@ -10,9 +10,9 @@ require('lazy').setup({
   'christoomey/vim-tmux-navigator',
 
   -- Git related plugins
+  'kdheepak/lazygit.nvim',
   -- 'tpope/vim-fugitive',
   -- 'tpope/vim-rhubarb',
-  'kdheepak/lazygit.nvim',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
