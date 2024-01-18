@@ -8,7 +8,6 @@ require('lazy').setup({
   -- NOTE: Misc plugins that don't require any configuration
 
   'christoomey/vim-tmux-navigator',
-  'catppuccin/nvim',
 
   -- Git related plugins
   -- 'tpope/vim-fugitive',
@@ -28,6 +27,14 @@ require('lazy').setup({
       "MunifTanjim/nui.nvim",
       -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     }
+  },
+
+  { -- Installs catppuccin-macchiato theme and sets it as default
+    'catppuccin/nvim',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'catppuccin-macchiato'
+    end,
   },
 
   -- NOTE: This is where your plugins related to LSP can be installed.
