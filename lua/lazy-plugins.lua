@@ -7,6 +7,15 @@
 require('lazy').setup({
   -- NOTE: Misc plugins that don't require any configuration
 
+  -- Git related plugins
+  'tpope/vim-fugitive',
+  'tpope/vim-rhubarb',
+  'kdheepak/lazygit.nvim',
+
+  -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-sleuth',
+
+-- Misc Plugins needing some setup
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
@@ -17,13 +26,6 @@ require('lazy').setup({
       -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     }
   },
-
-  -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
-  'kdheepak/lazygit.nvim',
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
