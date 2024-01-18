@@ -7,6 +7,8 @@
 require('lazy').setup({
   -- NOTE: Misc plugins that don't require any configuration
 
+  'christoomey/vim-tmux-navigator',
+
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
