@@ -88,10 +88,10 @@ vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 -- toggles neotree file explorer
-vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>") -- toggle neotree file explorer
+vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
 
 -- toggles lazygit
-vim.keymap.set("n", "<leader>G", ":LazyGit <CR>") -- toggle neotree file explorer
+vim.keymap.set("n", "<leader>G", ":LazyGit <CR>")
 
 -- deletes selected buffer
 vim.keymap.set("n", "<leader>m", ":bdelete<Cr>")
