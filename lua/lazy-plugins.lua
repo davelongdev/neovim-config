@@ -5,7 +5,7 @@
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- NOTE: Misc plugins that don't require any configuration
+  -- NOTE: Misc plugins that don't require any configuration here
 
   'christoomey/vim-tmux-navigator',
 
