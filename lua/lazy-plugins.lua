@@ -10,6 +10,7 @@ require('lazy').setup({
   'christoomey/vim-tmux-navigator',
   'tpope/vim-surround',
   'HiPhish/rainbow-delimiters.nvim',
+  'ap/vim-css-color',
 
   -- Git related plugins
   'kdheepak/lazygit.nvim',
