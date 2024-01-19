@@ -2,6 +2,28 @@
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
+-- expand tabs into spaces
+vim.o.expandtab = true
+
+-- set the number of columns that indenting and dedenting uses
+vim.o.shiftwidth = 2
+
+-- set tabs to 2
+vim.o.tabstop = 2
+
+-- adds virtual cells where there are none in the documentbibin
+-- keeps virtual block mode as a block instead of stopping where there is no cell in the doc
+vim.o.virtualedit = "block"
+
+-- opens a split window to display certain info - eg with substitute command
+vim.o.inccommand = "split"
+
+-- ignore case in command mode when using autocomplete
+vim.o.ignorecase = true
+
+-- keeps cursor in center of screen when scrolling
+vim.o.scrolloff = 999
+
 -- set highlight on search
 vim.o.hlsearch = false
 
@@ -73,5 +95,11 @@ vim.o.cursorline = true -- highlight the current cursor line
 
 -- enable break indent (:help breakindent)
 vim.o.breakindent = true
+
+-- open splits on bottom
+vim.o.splitbelow = true
+
+-- open splits on rights
+vim.o.splitright = true
 
 -- vim: ts=2 sts=2 sw=2 et
