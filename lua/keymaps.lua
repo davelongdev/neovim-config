@@ -93,4 +93,7 @@ vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>") -- toggle neotree file e
 -- toggles lazygit
 vim.keymap.set("n", "<leader>G", ":LazyGit <CR>") -- toggle neotree file explorer
 
+-- deletes selected buffer
+vim.keymap.set("n", "<leader>m", ":bdelete<Cr>")
+
 -- vim: ts=2 sts=2 sw=2 et
