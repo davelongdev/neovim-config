@@ -19,7 +19,11 @@ vim.o.virtualedit = "block"
 vim.o.inccommand = "split"
 
 -- ignore case in command mode when using autocomplete
+-- case-insensitive searching UNLESS \C or capital in search ??rw
 vim.o.ignorecase = true
+
+-- if you include mixed case in your search, assumes you want case-sensitive
+vim.o.smartcase = true
 
 -- keeps cursor in center of screen when scrolling
 vim.o.scrolloff = 999
@@ -44,12 +48,11 @@ vim.o.breakindent = true
 -- save undo history
 vim.o.undofile = true
 
--- case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
 -- keep signcolumn on by default
 vim.wo.signcolumn = 'yes'
+
+-- allow backspace on indent, end of line or insert mode start position?
+-- vim.o.backspace = "indent,eol,start"
 
 -- decrease update time
 vim.o.timeoutlen = 300
