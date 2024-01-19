@@ -20,6 +20,13 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
 -- Misc Plugins needing some setup
+
+  {
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons'
+},
+
   {
   'vimwiki/vimwiki',
   init = function()

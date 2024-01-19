@@ -36,4 +36,8 @@ require 'cmp-setup'
 -- (adding colors to delimiters like parenthesis)
 require 'rainbow-delimiters-setup'
 
+-- [[ Configure bufferline ]]
+-- (shows buffers on top of main window like tabs)
+require 'bufferline-setup'
+
 -- vim: ts=2 sts=2 sw=2 et
