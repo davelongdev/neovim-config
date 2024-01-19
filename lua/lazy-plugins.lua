@@ -1,15 +1,26 @@
+
 -- [[ Configure plugins ]]
+
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
---
+
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
+
+-- import lazy package manager
 require('lazy').setup({
   -- NOTE: Misc plugins that don't require any configuration here
 
+-- allows ctl + hjkl to navigate between windows as in tmux
   'christoomey/vim-tmux-navigator',
+
+-- for surrounding text
   'tpope/vim-surround',
+
+-- colored delimiters like parentesis
   'HiPhish/rainbow-delimiters.nvim',
+
+-- shows color blocks in the file so you can see your colors
   'ap/vim-css-color',
 
   -- Git related plugins
@@ -20,14 +31,16 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
--- Misc Plugins needing some setup
+-- [[ Misc Plugins needing some setup ]]
 
+-- shows buffers on top of main window like tabs
   {
     'akinsho/bufferline.nvim',
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons'
 },
 
+-- vimwiki for notetaking / sets filetype to md
   {
   'vimwiki/vimwiki',
   init = function()
@@ -42,6 +55,7 @@ require('lazy').setup({
   end,
   },
 
+-- neo tree files explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
@@ -53,6 +67,7 @@ require('lazy').setup({
     }
   },
 
+-- jsdoc automation for js comment/documentation generation
   {
     'heavenshell/vim-jsdoc',
     config = function()
@@ -60,7 +75,8 @@ require('lazy').setup({
     end,
   },
 
-  { -- Installs catppuccin-macchiato theme and sets it as default
+  -- installs catppuccin-macchiato theme and sets it as default
+  {
     'catppuccin/nvim',
     priority = 1000,
     config = function()
