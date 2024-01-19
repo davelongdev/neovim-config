@@ -32,4 +32,7 @@ require 'lsp-setup'
 -- (completion)
 require 'cmp-setup'
 
+-- [[ Configure rainbow-delimiters ]]
+-- (completion)
+require 'rainbow-delimiters'
 -- vim: ts=2 sts=2 sw=2 et
