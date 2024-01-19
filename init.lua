@@ -33,6 +33,7 @@ require 'lsp-setup'
 require 'cmp-setup'
 
 -- [[ Configure rainbow-delimiters ]]
--- (completion)
-require 'rainbow-delimiters'
+-- (adding colors to delimiters like parenthesis)
+require 'rainbow-delimiters-setup'
+
 -- vim: ts=2 sts=2 sw=2 et
