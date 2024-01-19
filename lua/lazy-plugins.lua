@@ -8,7 +8,7 @@ require('lazy').setup({
   -- NOTE: Misc plugins that don't require any configuration here
 
   'christoomey/vim-tmux-navigator',
-
+  'tpope/vim-surround',
   'HiPhish/rainbow-delimiters.nvim',
 
   -- Git related plugins
