@@ -17,27 +17,27 @@ require 'options'
 require 'keymaps'
 
 -- [[ Configure Telescope ]]
--- (fuzzy finder)
+-- fuzzy finder
 require 'telescope-setup'
 
 -- [[ Configure Treesitter ]]
--- (syntax parser for highlighting)
+-- syntax parser for highlighting etc.
 require 'treesitter-setup'
 
 -- [[ Configure LSP ]]
--- (Language Server Protocol)
+-- language server protocol
 require 'lsp-setup'
 
 -- [[ Configure nvim-cmp ]]
--- (completion)
+-- completion
 require 'cmp-setup'
 
 -- [[ Configure rainbow-delimiters ]]
--- (adding colors to delimiters like parenthesis)
+-- adds colors to delimiters eg parenthesis
 require 'rainbow-delimiters-setup'
 
 -- [[ Configure bufferline ]]
--- (shows buffers on top of main window like tabs)
+-- shows buffers on top of main window like tabs
 require 'bufferline-setup'
 
 -- vim: ts=2 sts=2 sw=2 et
