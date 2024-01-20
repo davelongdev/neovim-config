@@ -45,9 +45,6 @@ vim.keymap.set("c", "<C-w>", "<S-Right>")
 vim.cmd('cnoremap <c-k> <c-p>')
 vim.cmd('cnoremap <c-j> <c-n>')
 
--- ???  something for delete and yank / paste
--- vim.keymap.set("n", "zd", '"_dd')
-
 -- Vertical Movement - half page & stays in center
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
