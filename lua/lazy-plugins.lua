@@ -45,6 +45,7 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+-- autopairing for things like () and {}
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
