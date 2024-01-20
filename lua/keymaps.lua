@@ -61,7 +61,10 @@ vim.keymap.set("v", "jk", "<ESC>")
 vim.keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 -- delete single character without copying into register
-vim.keymap.set("n", "x", '"_x')
+-- vim.keymap.set("n", "x", '"_x')
+
+--delete line without copying 
+-- vim.keymap.set("n", "zd", '"_dd')
 
 -- increment/decrement numbers
 vim.keymap.set("n", "<leader>+", "<C-a>") -- increment
