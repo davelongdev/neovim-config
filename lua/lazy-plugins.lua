@@ -32,6 +32,11 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
 -- [[ Misc Plugins needing some setup ]]
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    opts = {} -- this is equalent to setup({}) function
+  },
 
 -- shows buffers on top of main window like tabs
   {
