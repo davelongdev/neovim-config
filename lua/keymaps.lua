@@ -94,4 +94,7 @@ vim.keymap.set("n", "<leader>G", ":LazyGit <CR>")
 -- deletes selected buffer
 vim.keymap.set("n", "<leader>m", ":bdelete<Cr>")
 
+-- keymapping for toggling nvim-cmp functionality (autocompletion) on and off - not working?
+-- vim.keymap.set("n", "<leader>x", "<cmd>lua vim.g.cmptoggle = not vim.g.cmptoggle<CR>", { desc = "toggle nvim-cmp" })
+
 -- vim: ts=2 sts=2 sw=2 et
