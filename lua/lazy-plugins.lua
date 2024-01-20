@@ -9,7 +9,8 @@
 
 -- import lazy package manager
 require('lazy').setup({
-  -- NOTE: Misc plugins that don't require any configuration here
+
+-- [[ Misc plugins ]]
 
 -- allows ctl + hjkl to navigate between windows as in tmux
   'christoomey/vim-tmux-navigator',
@@ -44,7 +45,6 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
--- [[ Misc Plugins needing some setup ]]
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
