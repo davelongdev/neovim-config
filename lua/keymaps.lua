@@ -89,7 +89,7 @@ vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
 
 -- toggles lazygit
-vim.keymap.set("n", "<leader>G", ":LazyGit <CR>")
+vim.keymap.set("n", "<leader>g", ":LazyGit <CR>")
 
 -- deletes selected buffer
 vim.keymap.set("n", "<leader>m", ":bdelete<Cr>")
