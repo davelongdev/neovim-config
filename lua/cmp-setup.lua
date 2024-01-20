@@ -6,6 +6,9 @@ require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
 cmp.setup {
+  enabled = function ()
+    return vim.g.cmptoggle
+  end,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
