@@ -74,7 +74,7 @@ require('lazy').setup({
   end,
   },
 
--- neo tree files explorer
+-- neo tree file explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
