@@ -94,16 +94,13 @@ vim.keymap.set("n", "<leader>G", ":LazyGit <CR>")
 -- deletes selected buffer
 vim.keymap.set("n", "<leader>m", ":bdelete<Cr>")
 
--- keymapping for toggling nvim-cmp functionality (autocompletion) on and off - not working?
-vim.keymap.set("n", "<leader>x", "<cmd>lua vim.g.cmptoggle = not vim.g.cmptoggle<CR>", { desc = "toggle nvim-cmp" })
+-- toggling nvim-cmp functionality (autocompletion) on and off
+-- vim.keymap.set("n", "<leader>x", "<cmd>lua vim.g.cmptoggle = not vim.g.cmptoggle<CR>", { desc = "toggle nvim-cmp" })
 
--- pseudo code for adding msg about if the cmp is on or not
--- local togglecmp = function ()
---     local cmp_on = true
---     vim.notify("Cmp " .. cmp_on and "enabled" or "disabled")
---     return vim.keymap.set("n", "<leader>x", "<cmd>lua vim.g.cmptoggle = not vim.g.cmptoggle<CR>", { desc = "toggle nvim-cmp" })
---   end
---
--- togglecmp()
---
+-- toggling nvim-cmp functionality (autocompletion) on and off and logging status message to command prompt area
+vim.keymap.set("n", "<leader>x", function ()
+  vim.g.cmptoggle = not vim.g.cmptoggle
+  vim.notify("Cmp " .. (vim.g.cmptoggle and "enabled" or "disabled"))
+end, { desc = "toggle nvim-cmp" })
+
 -- vim: ts=2 sts=2 sw=2 et
