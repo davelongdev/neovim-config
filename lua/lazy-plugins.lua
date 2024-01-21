@@ -25,7 +25,6 @@ require('lazy').setup({
   'ap/vim-css-color',
 
   -- Git related plugins
-  'kdheepak/lazygit.nvim',
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
