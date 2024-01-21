@@ -50,9 +50,8 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- use jk to exit insert and visual mode
-vim.keymap.set("i", "jk", "<ESC>")
-vim.keymap.set("v", "jk", "<ESC>")
--- vim.keymap.set("c", "jk", "<ESC>") - seems to map jk to <CR>? 
+vim.keymap.set({ "i", "v" }, "jk", "<ESC>")
+vim.keymap.set("c", "jk", "<C-c>") -- seems to map jk to <CR>? 
 
 -- clear search highlights
 vim.keymap.set("n", "<leader>nh", ":nohl<CR>")
