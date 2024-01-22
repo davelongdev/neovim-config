@@ -5,10 +5,10 @@
 -- expand tabs into spaces
 vim.o.expandtab = true
 
--- set the number of columns that indenting and dedenting uses
+-- set the number of columns for indenting and dedenting (when editing)
 vim.o.shiftwidth = 2
 
--- set tabs to 2
+-- set tabs to 2 (for when opening / closing file)
 vim.o.tabstop = 2
 
 -- adds virtual cells where there are none in the documentbibin
@@ -104,5 +104,9 @@ vim.o.splitbelow = true
 
 -- open splits on rights
 vim.o.splitright = true
+
+vim.o.timeoutlen = 100
+vim.o.ttimeoutlen = 100
+vim.o.timeout = true
 
 -- vim: ts=2 sts=2 sw=2 et
