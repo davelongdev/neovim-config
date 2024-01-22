@@ -12,6 +12,9 @@ require('lazy').setup({
 
 -- [[ Misc plugins ]]
 
+-- allows project-specific marks (bookmarks)
+  'ThePrimeagen/harpoon',
+
 -- allows ctl + hjkl to navigate between windows as in tmux
   'christoomey/vim-tmux-navigator',
 

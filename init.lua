@@ -40,4 +40,8 @@ require 'rainbow-delimiters-setup'
 -- shows buffers on top of main window like tabs
 require 'bufferline-setup'
 
+-- [[ Configure harpoon]]
+-- creates project-specific marks (bookmarks)
+require 'harpoon-setup'
+
 -- vim: ts=2 sts=2 sw=2 et
