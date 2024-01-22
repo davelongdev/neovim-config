@@ -1,5 +1,7 @@
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
+
+-- create cmp variable that imports cmp
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
@@ -23,7 +25,7 @@ cmp.setup {
     ['<C-k>'] = cmp.mapping.select_prev_item(),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    -- ['<C-Space>'] = cmp.mapping.complete {}, purpose?
+    ['<C-Space>'] = cmp.mapping.complete {}, -- purpose?
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
