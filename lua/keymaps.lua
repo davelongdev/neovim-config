@@ -49,9 +49,10 @@ vim.cmd('cnoremap <c-j> <c-n>')
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
--- use jk to exit insert and visual mode
+-- use jk to exit insert, visual, and command mode
+-- -- command mode jk setup needs to be refined
 vim.keymap.set({ "i", "v" }, "jk", "<ESC>")
-vim.keymap.set("c", "jk", "<C-c>") -- seems to map jk to <CR>? 
+vim.keymap.set("c", "jk", "<C-c>")
 
 -- clear search highlights
 vim.keymap.set("n", "<leader>nh", ":nohl<CR>")
@@ -76,9 +77,20 @@ vim.keymap.set("n", "<M-Right>", ":vertical resize +2<CR>")
 vim.keymap.set("n", "<leader>l", ":bnext<CR>")
 vim.keymap.set("n", "<leader>h", ":bprevious<CR>")
 
--- Move text up and down
+-- Move single line of text up and down
 vim.keymap.set("n", "<M-j>", "<Esc>:m .+1<CR>==")
 vim.keymap.set("n", "<M-k>", "<Esc>:m .-2<CR>==")
+
+-- Move selected lines up and down in visual mode
+vim.keymap.set("v", "<M-j>", ":m .+1<CR>==")
+vim.keymap.set("v", "<M-k>", ":m .-2<CR>==")
+
+-- Keep lines selected in visual mode after first move (works with above)
+vim.keymap.set("x", "<M-j>", ":move '>+1<CR>gv-gv")
+vim.keymap.set("x", "<M-k>", ":move '<-2<CR>gv-gv")
+
+-- adjust paste functionality in visual mode
+-- vim.keymap.set("v", "p", '"_dP')
 
 -- Move selected text left & right in visual mode and stay in visual mode (works in visual or visual line modes)
 vim.keymap.set("v", "<", "<gv")
@@ -101,5 +113,8 @@ vim.keymap.set("n", "<leader>x", function ()
   vim.g.cmptoggle = not vim.g.cmptoggle
   vim.notify("Cmp " .. (vim.g.cmptoggle and "enabled" or "disabled"))
 end, { desc = "toggle nvim-cmp" })
+
+-- shorcut to source the luasnips file, which will reload the snippets in this file
+vim.keymap.set("n", "<leader>v", ":source ~/.config/nvim/cmp-setup.lua<CR>", { desc = 'source my-snippets' } )
 
 -- vim: ts=2 sts=2 sw=2 et
