@@ -115,6 +115,6 @@ vim.keymap.set("n", "<leader>x", function ()
 end, { desc = "toggle nvim-cmp" })
 
 -- shorcut to source the luasnips file, which will reload the snippets in this file
-vim.keymap.set("n", "<leader>v", ":source ~/.config/nvim/cmp-setup.lua<CR>", { desc = 'source my-snippets' } )
+vim.keymap.set("n", "<leader>v", ":source ~/.config/nvim/lua/my-snippets.lua<CR>", { desc = 'source my-snippets' } )
 
 -- vim: ts=2 sts=2 sw=2 et

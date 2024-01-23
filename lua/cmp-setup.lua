@@ -10,26 +10,10 @@ local luasnip = require 'luasnip'
 -- for using vscode-style snippets and friendly-snippets
 require('luasnip.loaders.from_vscode').lazy_load()
 
-luasnip.config.setup {
+-- for using custom snippets in my-snippets.lua
+require('luasnip.loaders.from_lua').lazy_load({ paths = { './my-snippets.lua'} })
 
---add custom snippets
-  luasnip.add_snippets({
-    "js", {
-      luasnip.parser.parse_snippet(
-        'cl',
-        'console.log($0)'),
-    },
-    "lua", {
-      luasnip.parser.parse_snippet(
-        'lf',
-        'local $1 = function($2)/n $0/nend'),
-    },
-    "html", {
-      luasnip.parser.parse_snippet(
-        '1',
-        'html5'),
-    },
-  }),
+luasnip.config.setup {
 
   -- This tells LuaSnip to remember to keep around the last snippet.
   -- You can jump back into it even if you move outside of the selection
