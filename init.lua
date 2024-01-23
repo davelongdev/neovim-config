@@ -44,4 +44,7 @@ require 'bufferline-setup'
 -- creates project-specific marks (bookmarks)
 require 'harpoon-setup'
 
+-- [[ Configure diagnostics]]
+-- set up how diagnostic messages show up
+require 'diagnostics-setup'
 -- vim: ts=2 sts=2 sw=2 et
