@@ -105,9 +105,6 @@ vim.keymap.set("n", "<leader>m", ":bdelete<Cr>")
 -- refreshed neotree status icons
 vim.keymap.set("n", "<M-q>", ":lua require('neo-tree.sources.manager').refresh()<CR>")
 
--- toggling nvim-cmp functionality (autocompletion) on and off
--- vim.keymap.set("n", "<leader>x", "<cmd>lua vim.g.cmptoggle = not vim.g.cmptoggle<CR>", { desc = "toggle nvim-cmp" })
-
 -- toggling nvim-cmp functionality (autocompletion) on and off and logging status message to command prompt area
 vim.keymap.set("n", "<leader>x", function ()
   vim.g.cmptoggle = not vim.g.cmptoggle
