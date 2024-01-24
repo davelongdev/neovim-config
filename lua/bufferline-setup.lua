@@ -80,7 +80,7 @@ require("bufferline").setup
     --   local custom_map = {my_thing_ft: {icon = "my_thing_icon", hl}}
     --   return custom_map[element.filetype]
     -- end,
-    show_buffer_icons = true, --| false, -- disable filetype icons for buffers
+    show_buffer_icons = false, --| false, -- disable filetype icons for buffers
     show_buffer_close_icons = true, -- | false,
     show_close_icon = true, --| false,
     show_tab_indicators = true, --| false,
