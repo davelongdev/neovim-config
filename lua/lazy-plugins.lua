@@ -86,22 +86,6 @@ require('lazy').setup({
       "MunifTanjim/nui.nvim",
       -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
-    config = function()
-      require('neo-tree').setup({
-        default_component_configs = {
-          git_status = {
-            symbols = {
-               -- Status type
-              untracked = "?",
-              ignored   = "i",
-              unstaged  = "U",
-              staged    = "S",
-              conflict  = "C",
-            }
-          }
-        }
-      })
-    end,
   },
 
 -- jsdoc automation for js comment/documentation generation

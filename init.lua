@@ -47,4 +47,9 @@ require 'harpoon-setup'
 -- [[ Configure diagnostics]]
 -- set up how diagnostic messages show up
 require 'diagnostics-setup'
+
+-- [[ Configure neotree]]
+-- file explorer
+require 'neotree-setup'
+
 -- vim: ts=2 sts=2 sw=2 et
