@@ -52,4 +52,8 @@ require 'diagnostics-setup'
 -- file explorer
 require 'neotree-setup'
 
+-- [[ Configure whichkey]]
+-- menu for pending keybinds
+require 'whichkey-setup'
+
 -- vim: ts=2 sts=2 sw=2 et
