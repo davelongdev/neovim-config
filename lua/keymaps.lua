@@ -117,4 +117,6 @@ vim.keymap.set("n", "<leader>v", ":source ~/.config/nvim/lua/my-snippets.lua<CR>
 --  show :WhichKey - a list of important mappings
 vim.keymap.set("n", "<leader>i", ":WhichKey<Cr>", { desc = '[i]nfo / [i]mpt. keymaps' } )
 
+vim.keymap.set("n", '<leader>"', '"', { desc = 'registers', remap = true } )
+vim.keymap.set("n", "<leader>'", "'", { desc = 'marks', remap = true } )
 -- vim: ts=2 sts=2 sw=2 et
