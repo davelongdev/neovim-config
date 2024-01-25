@@ -12,6 +12,9 @@ require('lazy').setup({
 
 -- [[ Misc plugins ]]
 
+-- vim-vinegar-like file explorer
+  'stevearc/oil.nvim',
+
 -- adds a nice menu for registers when " is typed 
   -- navigate window w/ pgup pgdn
   {

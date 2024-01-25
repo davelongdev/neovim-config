@@ -56,4 +56,9 @@ require 'neotree-setup'
 -- menu for pending keybinds
 require 'whichkey-setup'
 
+
+-- [[ Configure oil.nvim]]
+-- vim-vinegar like file explorer 
+require 'oil-setup'
+
 -- vim: ts=2 sts=2 sw=2 et

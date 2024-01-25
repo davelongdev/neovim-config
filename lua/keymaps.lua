@@ -119,4 +119,7 @@ vim.keymap.set("n", "<leader>i", ":WhichKey<Cr>", { desc = '[i]nfo / [i]mpt. key
 
 vim.keymap.set("n", '<leader>"', '"', { desc = 'registers', remap = true } )
 vim.keymap.set("n", "<leader>'", "'", { desc = 'marks', remap = true } )
+
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "oil - open parent dir" })
+
 -- vim: ts=2 sts=2 sw=2 et
