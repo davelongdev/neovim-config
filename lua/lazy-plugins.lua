@@ -12,6 +12,9 @@ require('lazy').setup({
 
 -- [[ Misc plugins ]]
 
+-- display marks
+'kshenoy/vim-signature',
+
 -- vim-vinegar-like file explorer
   'stevearc/oil.nvim',
 
