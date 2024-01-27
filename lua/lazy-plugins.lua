@@ -12,6 +12,9 @@ require('lazy').setup({
 
 -- [[ Misc plugins ]]
 
+-- show an organized view of a file's language objects / tags
+  'preservim/tagbar',
+
 -- display marks
 'kshenoy/vim-signature',
 
