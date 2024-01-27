@@ -12,6 +12,9 @@ require('lazy').setup({
 
 -- [[ Misc plugins ]]
 
+-- adds repeat functionality with . for plugins
+  'tpope/vim-repeat',
+
 -- add window maximize functionality
   'szw/vim-maximizer',
 
