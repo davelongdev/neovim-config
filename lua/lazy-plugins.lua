@@ -12,6 +12,9 @@ require('lazy').setup({
 
 -- [[ Misc plugins ]]
 
+-- add window maximize functionality
+  'szw/vim-maximizer',
+
 -- show an organized view of a file's language objects / tags
   'preservim/tagbar',
 
