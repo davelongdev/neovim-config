@@ -61,4 +61,8 @@ require 'whichkey-setup'
 -- vim-vinegar like file explorer 
 require 'oil-setup'
 
+-- [[ Configure gitsigns]]
+-- shows git signs in sign column
+require 'gitsigns-setup'
+
 -- vim: ts=2 sts=2 sw=2 et
