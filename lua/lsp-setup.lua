@@ -48,7 +48,7 @@ require('which-key').register {
   ['<leader>c'] = { name = '[c]ode', _ = 'which_key_ignore' },
   ['<leader>d'] = { name = '[d]ocument', _ = 'which_key_ignore' },
   ['<leader>g'] = { name = '[g]it', _ = 'which_key_ignore' },
-  ['<leader>H'] = { name = 'git [h]unk', _ = 'which_key_ignore' },
+  ['<leader>h'] = { name = 'git [h]unk', _ = 'which_key_ignore' },
   ['<leader>r'] = { name = '[r]ename', _ = 'which_key_ignore' },
   ['<leader>s'] = { name = '[s]earch', _ = 'which_key_ignore' },
   ['<leader>t'] = { name = '[t]oggle', _ = 'which_key_ignore' },
@@ -58,7 +58,7 @@ require('which-key').register {
 -- required for visual <leader>hs (hunk stage) to work
 require('which-key').register({
   ['<leader>'] = { name = 'VISUAL <leader>' },
-  ['<leader>H'] = { 'git [h]unk' },
+  ['<leader>h'] = { 'git [h]unk' },
 }, { mode = 'v' })
 
 -- mason-lspconfig requires that these setup functions are called in this order
