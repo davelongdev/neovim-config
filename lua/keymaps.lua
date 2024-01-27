@@ -74,8 +74,9 @@ vim.keymap.set("n", "<M-Left>", ":vertical resize -2<CR>")
 vim.keymap.set("n", "<M-Right>", ":vertical resize +2<CR>")
 
 -- Navigate buffers
-vim.keymap.set("n", "<leader>l", ":bnext<CR>")
-vim.keymap.set("n", "<leader>h", ":bprevious<CR>")
+vim.keymap.set("n", "<leader>zl", ":bnext<CR>")
+vim.keymap.set("n", "<leader>zh", ":bprevious<CR>")
+vim.keymap.set("n", "<leader>sb", ":Telescope buffers<CR>", { desc = 'search [b]uffers' } )
 
 -- Move single line of text up and down
 vim.keymap.set("n", "<M-j>", "<Esc>:m .+1<CR>==")
