@@ -213,12 +213,14 @@ require('lazy').setup({
         end, { desc = 'reset git hunk' })
 
         -- normal mode
-        map('n', '<leader>hs', gs.stage_hunk, { desc = 'git stage hunk' })
-        map('n', '<leader>hr', gs.reset_hunk, { desc = 'git reset hunk' })
-        map('n', '<leader>hS', gs.stage_buffer, { desc = 'git Stage buffer' })
-        map('n', '<leader>hu', gs.undo_stage_hunk, { desc = 'undo stage hunk' })
-        map('n', '<leader>hR', gs.reset_buffer, { desc = 'git Reset buffer' })
-        map('n', '<leader>hp', gs.preview_hunk, { desc = 'preview git hunk' })
+        map('n', '<leader>hj', gs.next_hunk, { desc = 'git next hunk' })
+        map('n', '<leader>hk', gs.prev_hunk, { desc = 'git prev hunk' })
+        map('n', '<leader>hs', gs.stage_hunk, { desc = 'git [s]tage hunk' })
+        map('n', '<leader>hr', gs.reset_hunk, { desc = 'git [r]eset hunk' })
+        map('n', '<leader>hS', gs.stage_buffer, { desc = 'git [S]tage buffer' })
+        map('n', '<leader>hu', gs.undo_stage_hunk, { desc = '[u]ndo stage hunk' })
+        map('n', '<leader>hR', gs.reset_buffer, { desc = 'git [R]eset buffer' })
+        map('n', '<leader>hp', gs.preview_hunk, { desc = '[p]review git hunk' })
         map('n', '<leader>hb', function()
           gs.blame_line { full = false }
         end, { desc = 'git blame line' })
