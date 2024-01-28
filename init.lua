@@ -65,4 +65,8 @@ require 'oil-setup'
 -- shows git signs in sign column
 require 'gitsigns-setup'
 
+-- [[ Configure trouble.nvim]]
+-- window for showing troubleshooting notifications
+require 'trouble-setup'
+
 -- vim: ts=2 sts=2 sw=2 et

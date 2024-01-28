@@ -12,6 +12,9 @@ require('lazy').setup({
 
 -- [[ Misc plugins ]]
 
+-- window for showing troubleshooting notifications
+  'folke/trouble.nvim',
+
 -- adds repeat functionality with . for plugins
   'tpope/vim-repeat',
 
