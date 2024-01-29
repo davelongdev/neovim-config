@@ -49,10 +49,11 @@ vim.cmd('cnoremap <c-j> <c-n>')
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
--- use jk to exit insert, visual, and command mode
--- -- command mode jk setup needs to be refined
+-- use jk to exit insert & visual mode
 vim.keymap.set({ "i", "v" }, "jk", "<ESC>")
-vim.keymap.set("c", "jk", "<C-c>")
+
+-- use jk to exit command mode // not working well
+-- vim.keymap.set("c", "jk", "<C-c>")
 
 -- clear search highlights
 vim.keymap.set("n", "<leader>nh", ":nohl<CR>")
