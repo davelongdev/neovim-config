@@ -12,6 +12,9 @@ require('lazy').setup({
 
 -- [[ Misc plugins ]]
 
+-- splitting / joining blocks like arrays / objects
+  'Wansmer/treesj',
+
 -- window for showing troubleshooting notifications
   'folke/trouble.nvim',
 

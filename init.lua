@@ -69,4 +69,8 @@ require 'gitsigns-setup'
 -- window for showing troubleshooting notifications
 require 'trouble-setup'
 
+-- [[ Configure treesj]]
+-- splitting / joining blocks like arrays / objects
+require 'treesj-setup'
+
 -- vim: ts=2 sts=2 sw=2 et
