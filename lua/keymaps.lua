@@ -75,8 +75,8 @@ vim.keymap.set("n", "<M-Left>", ":vertical resize -2<CR>")
 vim.keymap.set("n", "<M-Right>", ":vertical resize +2<CR>")
 
 -- Navigate buffers
-vim.keymap.set("n", "<leader>zl", ":bnext<CR>")
-vim.keymap.set("n", "<leader>zh", ":bprevious<CR>")
+vim.keymap.set("n", "<leader>zl", ":bnext<CR>", { desc = "b next" })
+vim.keymap.set("n", "<leader>zh", ":bprevious<CR>", { desc = "b prev" })
 vim.keymap.set("n", "<leader>sb", ":Telescope buffers<CR>", { desc = 'search [b]uffers' } )
 
 -- Move single line of text up and down
@@ -119,9 +119,16 @@ vim.keymap.set("n", "<leader>v", ":source ~/.config/nvim/lua/my-snippets.lua<CR>
 --  show :WhichKey - a list of important mappings
 vim.keymap.set("n", "<leader>i", ":WhichKey<Cr>", { desc = '[i]nfo / [i]mpt. keymaps' } )
 
+-- add leader keymaps for marks / registers and add descriptions to whichkey
 vim.keymap.set("n", '<leader>"', '"', { desc = 'registers', remap = true } )
 vim.keymap.set("n", "<leader>'", "'", { desc = 'marks', remap = true } )
 
+-- add keymaps for oil.nvim
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "oil - open parent dir" })
+
+-- add keymaps for treesj / toggle split join blocks
+vim.keymap.set("n", "<leader>zt", ":TSJToggle<CR>", { desc = "treesj - [t]oggle block" })
+vim.keymap.set("n", "<leader>zs", ":TSJSplit<CR>", { desc = "treesj - [s]plit block" })
+vim.keymap.set("n", "<leader>zj", ":TSJJoin<CR>", { desc = "treesj - [j]oin block" })
 
 -- vim: ts=2 sts=2 sw=2 et
