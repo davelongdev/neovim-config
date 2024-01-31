@@ -12,6 +12,14 @@ require('lazy').setup({
 
 -- [[ Misc plugins ]]
 
+-- neorg - org mode for nvim / notes etc.
+  {
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    -- tag = "*",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+
 -- splitting / joining blocks like arrays / objects
   'Wansmer/treesj',
 

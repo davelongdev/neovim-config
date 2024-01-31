@@ -2,7 +2,7 @@
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.maplocalleader = ','
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 require 'lazy-bootstrap'
@@ -72,5 +72,9 @@ require 'trouble-setup'
 -- [[ Configure treesj]]
 -- splitting / joining blocks like arrays / objects
 require 'treesj-setup'
+
+-- [[ Configure neorg]]
+-- neorg - org mode for nvim / notes etc.
+require 'neorg-setup'
 
 -- vim: ts=2 sts=2 sw=2 et
