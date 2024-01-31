@@ -110,7 +110,7 @@ vim.keymap.set("n", "<M-q>", ":lua require('neo-tree.sources.manager').refresh()
 -- toggling nvim-cmp functionality (autocompletion) on and off and logging status message to command prompt area
 vim.keymap.set("n", "<leader>x", function ()
   vim.g.cmptoggle = not vim.g.cmptoggle
-  vim.notify("Cmp " .. (vim.g.cmptoggle and "enabled" or "disabled"))
+  vim.notify("Cmp " .. (vim.g.cmptoggle and "disabled" or "enabled"))
 end, { desc = "toggle nvim-cmp" })
 
 -- source the luasnips file, which will reload the snippets in this file
