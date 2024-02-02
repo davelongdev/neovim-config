@@ -28,8 +28,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- [[ my personal keymaps ]]
 
 -- for navigating links in the help file - changes ctl to option on mac
-vim.keymap.set("n", "<M-l>", "<C-]>")
-vim.keymap.set("n", "<M-o>", "<C-o>")
+vim.keymap.set("n", "<M-l>", "<C-]>") -- follows help link
+vim.keymap.set("n", "<M-o>", "<C-o>") -- returns to prev spot
 
 --command mode movement
 vim.keymap.set("c", "<C-h>", "<Left>")
