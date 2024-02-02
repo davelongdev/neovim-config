@@ -1,13 +1,31 @@
 require('neorg').setup {
     load = {
-      ["core.defaults"] = {}, -- Loads default behaviour
-      ["core.concealer"] = {}, -- Adds pretty icons to your documents
-      ["core.dirman"] = { -- Manages Neorg workspaces
+
+      -- loads defaults
+      ["core.defaults"] = {},
+
+      -- conceals syntax code and adds icons
+      ["core.concealer"] = {
+        config = {
+        icon_preset = 'diamond'
+      }
+    },
+
+      -- manages neorg workspaces
+      ["core.dirman"] = {
         config = {
           workspaces = {
-            notes = "~/notes",
+            main = "~/neorg",
+            notes = "~/neorg/notes",
           },
         },
       },
+
+    -- adds table of contents functionality
+    ["core.qol.toc"] = {
+      config = {
+        close_after_use = true
+      }
     },
+  }
 }
