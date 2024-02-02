@@ -12,6 +12,9 @@ require('lazy').setup({
 
 -- [[ Misc plugins ]]
 
+-- adds extra keymaps for common commands
+  'tpope/vim-unimpaired',
+
 -- neorg - org mode for nvim / notes etc.
   {
     "nvim-neorg/neorg",
