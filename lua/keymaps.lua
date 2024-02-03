@@ -56,7 +56,7 @@ vim.keymap.set({ "i", "v" }, "jk", "<ESC>")
 -- vim.keymap.set("c", "jk", "<C-c>")
 
 -- clear search highlights
-vim.keymap.set("n", "<leader>nh", ":nohl<CR>")
+vim.keymap.set("n", "<leader>zh", ":nohl<CR>")
 
 -- delete single character without copying into register
 -- vim.keymap.set("n", "x", '"_x')
@@ -130,5 +130,9 @@ vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "oil - open parent dir" })
 vim.keymap.set("n", "<leader>zt", ":TSJToggle<CR>", { desc = "treesj - [t]oggle block" })
 vim.keymap.set("n", "<leader>zs", ":TSJSplit<CR>", { desc = "treesj - [s]plit block" })
 vim.keymap.set("n", "<leader>zj", ":TSJJoin<CR>", { desc = "treesj - [j]oin block" })
+
+
+-- add keymaps for neorg
+vim.keymap.set("n", "<leader>nn", ":Neorg workspace notes<CR>", { desc = "[n]eorg [n]otes" })
 
 -- vim: ts=2 sts=2 sw=2 et
