@@ -40,7 +40,7 @@ wk.register(
     key_labels = {
       -- override the label used to display some keys. It doesn't effect WK in any other way.
       -- For example:
-      -- ["<space>"] = "SPC",
+      ["<space>"] = "SPC",
       -- ["<cr>"] = "RET",
       -- ["<tab>"] = "TAB",
     },
@@ -53,8 +53,8 @@ wk.register(
       group = "+", -- symbol prepended to a group
     },
     popup_mappings = {
-      scroll_down = "<c-d>", -- binding to scroll down inside the popup
-      scroll_up = "<c-u>", -- binding to scroll up inside the popup
+      scroll_down = "<c-j>", -- binding to scroll down inside the popup
+      scroll_up = "<c-k>", -- binding to scroll up inside the popup
     },
     window = {
       border = "none", -- none, single, double, shadow
