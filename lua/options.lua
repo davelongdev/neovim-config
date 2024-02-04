@@ -107,8 +107,4 @@ vim.opt.splitbelow = true
 -- open splits on rights
 vim.opt.splitright = true
 
--- sets folds to all open
-vim.opt.foldenable = false
-vim.opt.foldlevelstart = 99
-
 -- vim: ts=2 sts=2 sw=2 et

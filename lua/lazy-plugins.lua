@@ -12,6 +12,11 @@ require('lazy').setup({
 
 -- [[ Misc plugins ]]
 
+-- for better experience with folds
+  {'kevinhwang91/nvim-ufo',
+    dependencies = 'kevinhwang91/promise-async'
+  },
+
 -- adds extra keymaps for common commands
   'tpope/vim-unimpaired',
 

@@ -77,4 +77,8 @@ require 'treesj-setup'
 -- neorg - org mode for nvim / notes etc.
 require 'neorg-setup'
 
+-- [[ Configure nvim-ufo]]
+-- for better experience with folds
+require 'ufo-setup'
+
 -- vim: ts=2 sts=2 sw=2 et
