@@ -1,14 +1,14 @@
 local wk = require 'which-key'
 
 -- register method takes these two arguments - wk.register(mappings, opts)
-
 wk.register(
+  -- mappings
+  {},
+  -- opts
+  {}
+)
 
-  -- table for keymaps
-  {
-  },
-
-  -- table for options
+wk.setup(
   {
     -- adds the leader to keymaps in the above register table
     -- prefix = "<leader>",
