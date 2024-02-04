@@ -46,12 +46,12 @@ require('lazy').setup({
 
 -- adds a nice menu for registers when " is typed 
   -- navigate window w/ pgup pgdn
-  {
-    'junegunn/vim-peekaboo',
-    config = function()
-      vim.g.peekaboo_window="horiz bo 30new"
-    end,
-  },
+  -- {
+  --   'junegunn/vim-peekaboo',
+  --   config = function()
+  --     vim.g.peekaboo_window="horiz bo 30new"
+  --   end,
+  -- },
 
 -- allows project-specific marks (bookmarks)
   'ThePrimeagen/harpoon',
