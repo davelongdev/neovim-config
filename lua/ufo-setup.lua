@@ -17,6 +17,12 @@ end, { desc = "peek fold"}
 -- set up lsp as lsp client with indent as fallback
 require('ufo').setup({
     provider_selector = function(bufnr, filetype, buftype)
-        return {'lsp', 'indent'}
+        return {'lsp'}
     end
 })
+
+-- remove highlighting of folds (lua calling vimscript)
+vim.cmd("highlight folded guibg=none")
+
+-- remove highlighting of folds (using the lua api)
+-- vim.api.nvim_set_hl(0, "Folded", { bg = nil })
