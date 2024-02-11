@@ -53,7 +53,8 @@ require('which-key').register {
   ['<leader>s'] = { name = '[s]earch', _ = 'which_key_ignore' },
   ['<leader>t'] = { name = '[t]oggle', _ = 'which_key_ignore' },
   ['<leader>w'] = { name = '[w]orkspace', _ = 'which_key_ignore' },
-  ['<leader>n'] = { name = '[n]o [h]ighlight', _ = 'which_key_ignore' },
+  ['<leader>n'] = { name = '[n]eorg [n]otes', _ = 'which_key_ignore' },
+  ['<leader>z'] = { name = 'misc mappings', _ = 'which_key_ignore' },
 }
 -- register which-key VISUAL mode
 -- required for visual <leader>hs (hunk stage) to work

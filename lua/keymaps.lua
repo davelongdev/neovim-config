@@ -56,7 +56,7 @@ vim.keymap.set({ "i", "v" }, "jk", "<ESC>")
 -- vim.keymap.set("c", "jk", "<C-c>")
 
 -- clear search highlights
-vim.keymap.set("n", "<leader>zh", ":nohl<CR>")
+vim.keymap.set("n", "<leader>zn", ":nohl<CR>")
 
 -- delete single character without copying into register
 -- vim.keymap.set("n", "x", '"_x')
