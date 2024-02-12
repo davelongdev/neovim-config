@@ -75,8 +75,8 @@ vim.keymap.set("n", "<M-Left>", ":vertical resize -2<CR>")
 vim.keymap.set("n", "<M-Right>", ":vertical resize +2<CR>")
 
 -- Navigate buffers
-vim.keymap.set("n", "<leader>zl", ":bnext<CR>", { desc = "b next" })
-vim.keymap.set("n", "<leader>zh", ":bprevious<CR>", { desc = "b prev" })
+vim.keymap.set("n", "zl", ":bnext<CR>", { desc = "b next" })
+vim.keymap.set("n", "zh", ":bprevious<CR>", { desc = "b prev" })
 vim.keymap.set("n", "<leader>sb", ":Telescope buffers<CR>", { desc = 'search [b]uffers' } )
 
 -- Move single line of text up and down
@@ -134,5 +134,22 @@ vim.keymap.set("n", "<leader>zj", ":TSJJoin<CR>", { desc = "treesj - [j]oin bloc
 
 -- add keymaps for neorg
 vim.keymap.set("n", "<leader>nn", ":Neorg workspace notes<CR>", { desc = "[n]eorg [n]otes" })
+
+-- emacs-style bindings for navigating in insert mode
+vim.keymap.set("i", "<C-f>", "<right>")
+vim.keymap.set("i", "<C-b>", "<left>")
+vim.keymap.set("i", "<C-a>", "<home>")
+vim.keymap.set("i", "<C-e>", "<end>")
+vim.keymap.set("i", "<C-b>", "<S-left>")
+vim.keymap.set("i", "<C-f>", "<S-right>")
+
+vim.keymap.set("i", "<M-l>", "<right>")
+vim.keymap.set("i", "<M-h>", "<left>")
+vim.keymap.set("i", "<M-j>", "<down>")
+vim.keymap.set("i", "<M-k>", "<up>")
+
+-- add shortcut for neogit
+
+vim.keymap.set("n", "<leader>G", ":Neogit<CR>", { desc = "neogit" })
 
 -- vim: ts=2 sts=2 sw=2 et
