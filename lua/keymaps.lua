@@ -143,10 +143,10 @@ vim.keymap.set("i", "<C-e>", "<end>")
 vim.keymap.set("i", "<C-b>", "<S-left>")
 vim.keymap.set("i", "<C-f>", "<S-right>")
 
-vim.keymap.set("i", "<M-l>", "<right>")
-vim.keymap.set("i", "<M-h>", "<left>")
-vim.keymap.set("i", "<M-j>", "<down>")
-vim.keymap.set("i", "<M-k>", "<up>")
+vim.keymap.set("i", "<C-l>", "<right>")
+vim.keymap.set("i", "<C-h>", "<left>")
+vim.keymap.set("i", "<C-j>", "<down>")
+vim.keymap.set("i", "<C-k>", "<up>")
 
 -- add shortcut for neogit
 
