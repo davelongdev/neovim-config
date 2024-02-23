@@ -12,6 +12,9 @@ require('lazy').setup({
 
 -- [[ Misc plugins ]]
 
+-- visualize undo history as tree
+  'mbbill/undotree',
+
 -- for better experience with folds
   {'kevinhwang91/nvim-ufo',
     dependencies = 'kevinhwang91/promise-async'

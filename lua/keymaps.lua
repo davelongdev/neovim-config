@@ -152,4 +152,7 @@ vim.keymap.set("i", "<C-k>", "<up>")
 
 vim.keymap.set("n", "<leader>G", ":Neogit<CR>", { desc = "neogit" })
 
+-- add keymap for undotree toggle
+vim.keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "neogit" })
+
 -- vim: ts=2 sts=2 sw=2 et
