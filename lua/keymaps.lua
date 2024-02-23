@@ -148,7 +148,7 @@ vim.keymap.set("i", "<C-h>", "<left>")
 vim.keymap.set("i", "<C-j>", "<down>")
 vim.keymap.set("i", "<C-k>", "<up>")
 
--- add shortcut for neogit
+-- add keymap for neogit
 
 vim.keymap.set("n", "<leader>G", ":Neogit<CR>", { desc = "neogit" })
 
