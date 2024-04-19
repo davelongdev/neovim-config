@@ -33,11 +33,6 @@ require('lazy').setup({
       "nvim-neorg/neorg",
       dependencies = { "luarocks.nvim" },
       build = ":Neorg sync-parsers",
-      -- put any other flags you wanted to pass to lazy here!
-      -- config = function()
-      --     require("neorg").setup({
-      --     })
-      -- end,
   },
 -- neorg - org mode for nvim / notes etc.
   -- {
