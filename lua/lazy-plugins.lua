@@ -23,14 +23,29 @@ require('lazy').setup({
 -- adds extra keymaps for common commands
   'tpope/vim-unimpaired',
 
--- neorg - org mode for nvim / notes etc.
+-- adds luarocks for neorg
   {
-    "nvim-neorg/neorg",
-    build = ":Neorg sync-parsers",
-    -- tag = "*",
-    dependencies = { "nvim-lua/plenary.nvim" },
+      "vhyrro/luarocks.nvim",
+      priority = 1000, -- We'd like this plugin to load first out of the rest
+      config = true, -- This automatically runs `require("luarocks-nvim").setup()`
   },
-
+  {
+      "nvim-neorg/neorg",
+      dependencies = { "luarocks.nvim" },
+      build = ":Neorg sync-parsers",
+      -- put any other flags you wanted to pass to lazy here!
+      -- config = function()
+      --     require("neorg").setup({
+      --     })
+      -- end,
+  },
+-- neorg - org mode for nvim / notes etc.
+  -- {
+  --   "nvim-neorg/neorg",
+  --   -- tag = "*",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  -- },
+  --
 -- splitting / joining blocks like arrays / objects
   'Wansmer/treesj',
 
