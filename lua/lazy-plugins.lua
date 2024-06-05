@@ -99,7 +99,7 @@ require('lazy').setup({
     "nvim-telescope/telescope.nvim", -- optional
     "ibhagwan/fzf-lua",              -- optional
   },
-  config = true
+  config = true,
 },
 
   -- Detect tabstop and shiftwidth automatically
