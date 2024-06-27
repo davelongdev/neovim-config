@@ -46,7 +46,8 @@ end
 -- document existing key chains
 require('which-key').register {
   ['<leader>c'] = { name = '[c]ode', _ = 'which_key_ignore' },
-  ['<leader>d'] = { name = '[d]ocument', _ = 'which_key_ignore' },
+-- i changed d to l bc i wasn't using d and needed d for debugging - should find a better solution for document
+  ['<leader>l'] = { name = '[d]ocument', _ = 'which_key_ignore' },
   ['<leader>g'] = { name = '[g]it', _ = 'which_key_ignore' },
   ['<leader>h'] = { name = 'git [h]unk', _ = 'which_key_ignore' },
   ['<leader>r'] = { name = '[r]ename', _ = 'which_key_ignore' },

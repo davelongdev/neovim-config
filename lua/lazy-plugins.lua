@@ -12,6 +12,58 @@ require('lazy').setup({
 
 -- [[ Misc plugins ]]
 
+-- debugging stuff
+
+  {
+    {
+    'mfussenegger/nvim-dap',
+    config = function()
+
+      local dap = require('dap')
+      local dapui = require('dapui')
+
+      dapui.setup()
+
+      dap.listeners.before.attach.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.launch.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated.dapui_config = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited.dapui_config = function()
+        dapui.close()
+      end
+
+      vim.keymap.set('n', '<Leader>db', dap.toggle_breakpoint, {desc = '[d]bug toggle [b]reakpoint'})
+      vim.keymap.set('n', '<Leader>dc', dap.continue, {desc = '[d]ebug [c]ontinue'})
+      vim.keymap.set("n", "<Leader>d1", dap.step_into, {desc = '[d]ebug step into'})
+      vim.keymap.set("n", "<Leader>d2", dap.step_over, {desc = '[d]ebug step over'})
+      vim.keymap.set("n", "<Leader>d3", dap.step_out, {desc = '[d]ebug step out'})
+      vim.keymap.set("n", "<Leader>d4", dap.step_back, {desc = '[d]ebug step back'})
+      vim.keymap.set("n", "<Leader>dr", dap.restart, {desc = '[d]ebug [r]estart'})
+
+     -- Eval var under cursor
+      vim.keymap.set("n", "<space>?", function()
+        require("dapui").eval(nil, { enter = true })
+      end)
+
+    end,
+    },
+    'rcarriga/nvim-dap-ui',
+    'theHamsta/nvim-dap-virtual-text',
+    'nvim-neotest/nvim-nio',
+    {
+      'mfussenegger/nvim-dap-python',
+      ft = 'python',
+      config = function()
+        require('dap-python').setup('python')
+      end,
+    },
+  },
+
 -- visualize undo history as tree
   'mbbill/undotree',
 
