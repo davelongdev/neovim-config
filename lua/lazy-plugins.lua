@@ -36,18 +36,21 @@ require('lazy').setup({
       dap.listeners.before.event_exited.dapui_config = function()
         dapui.close()
       end
+      
+      -- f is closer and easier to type than b
+      vim.keymap.set('n', '<Leader>df', dap.toggle_breakpoint, {desc = '[d]ebug toggle breakpoint'})
 
-      vim.keymap.set('n', '<Leader>db', dap.toggle_breakpoint, {desc = '[d]bug toggle [b]reakpoint'})
       vim.keymap.set('n', '<Leader>dc', dap.continue, {desc = '[d]ebug [c]ontinue'})
       vim.keymap.set("n", "<Leader>d1", dap.step_into, {desc = '[d]ebug step into'})
       vim.keymap.set("n", "<Leader>d2", dap.step_over, {desc = '[d]ebug step over'})
       vim.keymap.set("n", "<Leader>d3", dap.step_out, {desc = '[d]ebug step out'})
       vim.keymap.set("n", "<Leader>d4", dap.step_back, {desc = '[d]ebug step back'})
       vim.keymap.set("n", "<Leader>dr", dap.restart, {desc = '[d]ebug [r]estart'})
+      vim.keymap.set("n", "<Leader>dx", dap.terminate, {desc = '[d]ebug terminate'})
 
      -- Eval var under cursor
       vim.keymap.set("n", "<space>?", function()
-        require("dapui").eval(nil, { enter = true })
+        dapui.eval(nil, { enter = true })
       end)
 
     end,
@@ -171,6 +174,7 @@ require('lazy').setup({
 },
 
 -- vimwiki for notetaking / sets filetype to md
+
   -- {
   -- 'vimwiki/vimwiki',
   -- init = function()
