@@ -22,4 +22,4 @@ I've experimented with other editors like emacs, vscode, sublime text editor, he
 
 ## Feel free to copy
 
-Feel free to look at my config files and copy anythin you like.
+Feel free to look at my config files and copy anything you like.
