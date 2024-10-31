@@ -46,7 +46,7 @@ wk.setup(
       filetypes = {},
     },
     spec = {
-  -- document existing key chains
+    -- document existing key chains - refactored from old spc in diagnostics-setup.lua
     { "<leader>c", group = "[c]ode" },
     { "<leader>c_", hidden = true },
     { "<leader>g", group = "[g]it" },
@@ -67,8 +67,8 @@ wk.setup(
     { "<leader>w_", hidden = true },
     { "<leader>z", group = "misc mappings" },
     { "<leader>z_", hidden = true },
-  -- register which-key VISUAL mode
-  -- required for visual <leader>hs (hunk stage) to work
+      -- register which-key VISUAL mode
+      -- required for visual <leader>hs (hunk stage) to work
     { "<leader>", group = "VISUAL <leader>", mode = "v" },
     { "<leader>h", desc = "git [h]unk", mode = "v" },
     -- neorg mappings
