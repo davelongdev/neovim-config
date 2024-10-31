@@ -78,6 +78,10 @@ require('lazy').setup({
 -- adds extra keymaps for common commands
   'tpope/vim-unimpaired',
 
+-- adds icons - needed for which-key
+  'nvim-tree/nvim-web-devicons',
+  { 'echasnovski/mini.nvim', version = false },
+
 -- adds luarocks for neorg
   {
       "vhyrro/luarocks.nvim",

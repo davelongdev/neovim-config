@@ -43,27 +43,6 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
--- document existing key chains
-require('which-key').register {
-  ['<leader>c'] = { name = '[c]ode', _ = 'which_key_ignore' },
--- i changed d to l bc i wasn't using d and needed d for debugging - should find a better solution for document
-  ['<leader>l'] = { name = '[d]ocument', _ = 'which_key_ignore' },
-  ['<leader>g'] = { name = '[g]it', _ = 'which_key_ignore' },
-  ['<leader>h'] = { name = 'git [h]unk', _ = 'which_key_ignore' },
-  ['<leader>r'] = { name = '[r]ename', _ = 'which_key_ignore' },
-  ['<leader>s'] = { name = '[s]earch', _ = 'which_key_ignore' },
-  ['<leader>t'] = { name = '[t]oggle', _ = 'which_key_ignore' },
-  ['<leader>w'] = { name = '[w]orkspace', _ = 'which_key_ignore' },
-  ['<leader>n'] = { name = '[n]eorg [n]otes', _ = 'which_key_ignore' },
-  ['<leader>z'] = { name = 'misc mappings', _ = 'which_key_ignore' },
-}
--- register which-key VISUAL mode
--- required for visual <leader>hs (hunk stage) to work
-require('which-key').register({
-  ['<leader>'] = { name = 'VISUAL <leader>' },
-  ['<leader>h'] = { 'git [h]unk' },
-}, { mode = 'v' })
-
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
 require('mason').setup()

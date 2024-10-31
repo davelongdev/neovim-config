@@ -52,11 +52,3 @@ require('neorg').setup {
     },
   }
 }
-
-require('which-key').register {
-  ['<localleader>m'] = { name = '[m]ode', _ = 'which_key_ignore' },
-  ['<localleader>i'] = { name = '[i]nsert', _ = 'which_key_ignore' },
-  ['<localleader>l'] = { name = '[l]ist', _ = 'which_key_ignore' },
-  ['<localleader>n'] = { name = '[n]eorg', _ = 'which_key_ignore' },
-  ['<localleader>t'] = { name = '[t]o do', _ = 'which_key_ignore' },
-}
