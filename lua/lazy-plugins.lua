@@ -135,6 +135,22 @@ require('lazy').setup({
 -- allows ctl + hjkl to navigate between windows as in tmux
   'christoomey/vim-tmux-navigator',
 
+-- claude code integration (IDE protocol - diffs, selections, diagnostics)
+  {
+    'coder/claudecode.nvim',
+    config = true,
+    keys = {
+      { '<leader>ac', '<cmd>ClaudeCode<cr>', desc = 'toggle [c]laude' },
+      { '<leader>af', '<cmd>ClaudeCodeFocus<cr>', desc = '[f]ocus claude' },
+      { '<leader>ar', '<cmd>ClaudeCode --resume<cr>', desc = '[r]esume claude session' },
+      { '<leader>aC', '<cmd>ClaudeCode --continue<cr>', desc = '[C]ontinue last session' },
+      { '<leader>ab', '<cmd>ClaudeCodeAdd %<cr>', desc = 'add current [b]uffer as context' },
+      { '<leader>as', '<cmd>ClaudeCodeSend<cr>', mode = 'v', desc = '[s]end selection to claude' },
+      { '<leader>aa', '<cmd>ClaudeCodeDiffAccept<cr>', desc = '[a]ccept diff' },
+      { '<leader>ad', '<cmd>ClaudeCodeDiffDeny<cr>', desc = '[d]eny diff' },
+    },
+  },
+
 -- for surrounding text
   'tpope/vim-surround',
 
@@ -322,12 +338,23 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
-
+  {
+    "lervag/vimtex",
+    lazy = false,     -- we don't want to lazy load VimTeX
+    -- tag = "v2.15", -- uncomment to pin to a specific release
+    init = function()
+      -- VimTeX configuration goes here, e.g.
+      vim.g.vimtex_view_method = "zathura"
+      vim.g.vimtex_compiler_enabled = 0
+    end
+  },
+  {
+    "let-def/texpresso.vim",
+  }
   -- additional plugins from kickstart.
 
   -- require 'kickstart.plugins.autoformat',
   -- require 'kickstart.plugins.debug',
 
 }, {})
-
 -- vim: ts=2 sts=2 sw=2 et

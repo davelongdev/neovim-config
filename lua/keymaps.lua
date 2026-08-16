@@ -52,6 +52,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- use jk to exit insert & visual mode
 vim.keymap.set({ "i", "v" }, "jk", "<ESC>")
 
+-- use jk to exit terminal mode (claude code terminal etc.)
+vim.keymap.set("t", "jk", [[<C-\><C-n>]])
+
 -- use jk to exit command mode // not working well
 -- vim.keymap.set("c", "jk", "<C-c>")
 
@@ -101,6 +104,9 @@ vim.keymap.set("v", ">", ">gv")
 -- toggles neotree file explorer
 vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
 
+-- toggles wrap
+vim.keymap.set("n", "<leader>w", ":set wrap!<Cr>")
+
 -- deletes selected buffer
 vim.keymap.set("n", "<leader>m", ":bdelete<Cr>")
 
@@ -110,7 +116,7 @@ vim.keymap.set("n", "<M-q>", ":lua require('neo-tree.sources.manager').refresh()
 -- toggling nvim-cmp functionality (autocompletion) on and off and logging status message to command prompt area
 vim.keymap.set("n", "<leader>x", function ()
   vim.g.cmptoggle = not vim.g.cmptoggle
-  vim.notify("Cmp " .. (vim.g.cmptoggle and "disabled" or "enabled"))
+  vim.notify("Cmp " .. (vim.g.cmptoggle and "enabled" or "disabled"))
 end, { desc = "toggle nvim-cmp" })
 
 -- source the luasnips file, which will reload the snippets in this file

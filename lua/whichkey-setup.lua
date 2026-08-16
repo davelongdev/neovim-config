@@ -47,6 +47,10 @@ wk.setup(
     },
     spec = {
     -- document existing key chains - refactored from old spc in diagnostics-setup.lua
+    { "<leader>a", group = "[a]i claude" },
+    { "<leader>a_", hidden = true },
+    { "<leader>A", group = "swap [A]rgument" },
+    { "<leader>A_", hidden = true },
     { "<leader>c", group = "[c]ode" },
     { "<leader>c_", hidden = true },
     { "<leader>g", group = "[g]it" },

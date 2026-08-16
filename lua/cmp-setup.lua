@@ -28,7 +28,7 @@ luasnip.config.setup {
 
 cmp.setup {
   enabled = function ()
-    return not vim.g.cmptoggle
+    return vim.g.cmptoggle
   end,
   snippet = {
     expand = function(args)
