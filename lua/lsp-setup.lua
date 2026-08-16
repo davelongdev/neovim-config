@@ -57,7 +57,7 @@ require('mason-lspconfig').setup()
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-  -- clangd = {},
+  clangd = {},
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
@@ -93,4 +93,10 @@ require("mason").setup()
 require("mason-lspconfig").setup {
   ensure_installed = { "lua_ls" }
 }
+
+-- clangd: trust the ARM cross-compiler so embedded projects get
+-- correct system include paths
+vim.lsp.config('clangd', {
+  cmd = { 'clangd', '--query-driver=/usr/bin/arm-none-eabi-gcc' },
+})
 -- vim: ts=2 sts=2 sw=2 et
