@@ -81,5 +81,6 @@ require 'neorg-setup'
 -- for better experience with folds
 
 require 'ufo-setup'
+require 'focus-setup'
 -- vim: ts=2 sts=2 sw=2 et
 

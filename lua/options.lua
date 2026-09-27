@@ -86,6 +86,9 @@ vim.opt.relativenumber = true -- show relative line numbers
 -- shows absolute line number on cursor line (when relative number is on)
 vim.opt.number = true
 
+-- toggle relative <-> absolute line numbers (number stays on either way)
+vim.keymap.set('n', '<leader>tr', '<cmd>set relativenumber!<CR>', { desc = '[t]oggle [r]elative numbers' })
+
 -- copy indent from current line when starting new one
 vim.opt.autoindent = true
 
@@ -94,6 +97,14 @@ vim.opt.shortmess:append("I")
 
 -- line wrapping
 vim.opt.wrap = false
+
+-- writing mode: soft-wrap long lines at word boundaries (display only; the file is not changed)
+vim.keymap.set('n', '<leader>tw', function()
+  local on = not vim.wo.wrap
+  vim.wo.wrap = on
+  vim.wo.linebreak = on
+  vim.notify('writing mode ' .. (on and 'on' or 'off'))
+end, { desc = '[t]oggle [w]riting mode (soft wrap)' })
 
 -- cursor line
 vim.opt.cursorline = true -- highlight the current cursor line

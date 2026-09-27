@@ -350,7 +350,13 @@ require('lazy').setup({
   },
   {
     "let-def/texpresso.vim",
-  }
+  },
+
+-- [[ Reading / focus: cap the text width without hard-wrapping the file ]]
+--  configured + keymaps in lua/focus-setup.lua
+  'shortcuts/no-neck-pain.nvim',  -- pads the sides so the text window is ~80 cols
+  'folke/zen-mode.nvim',          -- distraction-free: one centred window, UI hidden
+
   -- additional plugins from kickstart.
 
   -- require 'kickstart.plugins.autoformat',

@@ -99,4 +99,17 @@ require("mason-lspconfig").setup {
 vim.lsp.config('clangd', {
   cmd = { 'clangd', '--query-driver=/usr/bin/arm-none-eabi-gcc' },
 })
+-- clangd marks code inside a false #if (e.g. another hub's HMI file in a
+-- Build HAT compile database) as 'comment' semantic tokens, so whole files
+-- go grey. Toggle that override off/on; treesitter highlights underneath.
+local inactive_hl = vim.api.nvim_get_hl(0, { name = '@lsp.type.comment', link = true })
+local inactive_shown = true
+local function toggle_inactive()
+  inactive_shown = not inactive_shown
+  vim.api.nvim_set_hl(0, '@lsp.type.comment', inactive_shown and inactive_hl or {})
+  vim.notify('inactive-code greying ' .. (inactive_shown and 'on' or 'off'))
+end
+vim.api.nvim_create_user_command('ToggleInactive', toggle_inactive, {})
+vim.keymap.set('n', '<leader>ti', toggle_inactive, { desc = '[t]oggle [i]nactive-code greying' })
+
 -- vim: ts=2 sts=2 sw=2 et

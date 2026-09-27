@@ -27,8 +27,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- [[ my personal keymaps ]]
 
+-- jump 20 columns (Alt+h / Alt+l; hold d or k)
+-- note: in help buffers, <M-l> follows links instead (after/ftplugin/help.lua)
+vim.keymap.set({ "n", "x", "o" }, "<M-h>", "20h")
+vim.keymap.set({ "n", "x", "o" }, "<M-l>", "20l")
+
 -- for navigating links in the help file - changes ctl to option on mac
-vim.keymap.set("n", "<M-l>", "<C-]>") -- follows help link
 vim.keymap.set("n", "<M-o>", "<C-o>") -- returns to prev spot
 
 --command mode movement
